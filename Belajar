@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hati-hati!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            transition: background-color 0.3s;
+        }
+        
+        .warning {
+            text-align: center;
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 10px;
+            z-index: 100;
+            max-width: 80%;
+        }
+        
+        h1 {
+            color: #ff0000;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #ff0000;
+        }
+        
+        p {
+            font-size: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .virus-icon {
+            font-size: 4rem;
+            margin: 20px;
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body id="background">
+    <div class="warning">
+        <div class="virus-icon">⚠️</div>
+        <h1>PERINGATAN!</h1>
+        <p>Mampus HPmu udah di jebol Aqdil🤣</p>
+        <p>Sistem di penuhi virus👾...</p>
+    </div>
+
+    <script>
+        const colors = [
+            '#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff',
+            '#ff6600', '#6600ff', '#ff0066', '#00ff66', '#ff6600', '#ff0000'
+        ];
+        
+        let currentIndex = 0;
+        
+        function changeBackground() {
+            const body = document.getElementById('background');
+            body.style.backgroundColor = colors[currentIndex];
+            
+            currentIndex = (currentIndex + 1) % colors.length;
+            
+            // Kecepatan berubah (dalam milidetik)
+            const speed = 300 + Math.random() * 200;
+            setTimeout(changeBackground, speed);
+        }
+        
+        // Mulai efek kedip
+        changeBackground();
+        
+        // Tambahkan efek getar pada teks
+        setInterval(() => {
+            const warning = document.querySelector('.warning');
+            warning.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
+        }, 50);
+    </script>
+</body>
+</html>
